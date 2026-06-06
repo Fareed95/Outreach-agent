@@ -1,0 +1,15 @@
+# CrodlinOutreachAgent — Cron Schedule
+# Timezone: Asia/Kolkata (IST)
+# Docs: https://crontab.guru
+
+# ── Main outreach pipeline ─────────────────────────────────
+# Runs every day at 9:00 AM IST
+0 9 * * * root cd /app && uv run main.py --mode outreach >> /app/logs/cron.log 2>&1
+
+# ── Feedback/learning loop ─────────────────────────────────
+# Runs every day at 6:00 PM IST (after day's sends are done)
+0 18 * * * root cd /app && uv run main.py --mode feedback >> /app/logs/cron.log 2>&1
+
+# ── Weekly CSV backup ──────────────────────────────────────
+# Every Sunday at midnight
+0 0 * * 0 root cd /app && cp -r data data_backup_$(date +\%Y\%m\%d) >> /app/logs/cron.log 2>&1

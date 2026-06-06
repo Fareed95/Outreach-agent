@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  outreach-agent:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: crodlin_outreach_agent
+    restart: unless-stopped
+
+    env_file:
+      - ../.env
+
+    volumes:
+      # Persist data and logs on host machine
+      - ../data:/app/data
+      - ../logs:/app/logs
+
+    environment:
+      - APP_ENV=production
+      - TZ=Asia/Kolkata         # IST timezone for cron accuracy
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
