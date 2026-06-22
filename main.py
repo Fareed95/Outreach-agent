@@ -1,7 +1,7 @@
 """
 main.py
 -------
-Entry point for CrodlinOutreachAgent.
+Entry point for Syntrase.
 Called by cron or manually.
 
 Usage:
@@ -31,7 +31,7 @@ async def run_feedback() -> None:
 
 def parse_args() -> argparse.Namespace:
     """Parse CLI arguments."""
-    parser = argparse.ArgumentParser(description="CrodlinOutreachAgent")
+    parser = argparse.ArgumentParser(description="Syntrase")
     parser.add_argument("--mode", choices=["outreach", "feedback"], required=True)
     parser.add_argument("--niche", type=str, default=settings.DEFAULT_NICHE)
     parser.add_argument("--location", type=str, default=settings.DEFAULT_LOCATION)

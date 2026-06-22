@@ -1,4 +1,4 @@
-# CrodlinOutreachAgent — Product Vision & Feature Spec
+# Syntrase — Product Vision & Feature Spec
 
 > The world's first fully open-source, self-hostable, AI-powered outreach agent.
 > Research → Personalize → Send → Learn. All automated. All yours.
@@ -19,7 +19,7 @@ Cold outreach tools today are either:
 
 ## The Solution
 
-**CrodlinOutreachAgent** — An autonomous AI agent that:
+**Syntrase** — An autonomous AI agent that:
 
 1. Takes your target (niche + location) as input
 2. Researches businesses and their pain points intelligently
@@ -36,7 +36,7 @@ Cold outreach tools today are either:
 ## Who Is This For
 
 ### B2B Use Cases:
-- **Agencies** (like Crodlin) — pitch software services to target businesses
+- **Agencies** (like Syntrase users) — pitch software services to target businesses
 - **Freelancers** — pitch development, design, or consulting services
 - **SaaS founders** — reach potential customers at scale
 - **Consultants** — pitch strategy, marketing, finance services
@@ -315,7 +315,7 @@ next_action, generated_at
 
 ## Competitive Positioning
 
-| Feature | CrodlinOutreachAgent | Instantly.ai | Apollo.io | Lemlist |
+| Feature | Syntrase | Instantly.ai | Apollo.io | Lemlist |
 |---|---|---|---|---|
 | Open Source | ✅ | ❌ | ❌ | ❌ |
 | Self-hostable | ✅ | ❌ | ❌ | ❌ |
@@ -336,7 +336,7 @@ next_action, generated_at
 | Stream | How | Revenue potential |
 |---|---|---|
 | Cloud hosted version | Pay per campaign / subscription | ₹999-4999/month per user |
-| Managed onboarding | Setup + config service via Crodlin | ₹10,000-25,000 one-time |
+| Managed onboarding | Setup + config service via Syntrase | ₹10,000-25,000 one-time |
 | Premium templates | Niche-specific email template packs | ₹499-1999 per pack |
 | API access | Developers build on top | Usage based |
 | Enterprise | Custom deployment + support | ₹50,000+/month |
@@ -354,5 +354,5 @@ next_action, generated_at
 
 ---
 
-*Built by Crodlin Technology, Mumbai.*
+*Built by Syntrase — Mumbai.*
 *Founded by Fareed — B.E. Computer Science, Rizvi College of Engineering.*

@@ -1,11 +1,11 @@
 version: "3.9"
 
 services:
-  outreach-agent:
+  syntrase:
     build:
       context: ..
       dockerfile: docker/Dockerfile
-    container_name: crodlin_outreach_agent
+    container_name: syntrase
     restart: unless-stopped
 
     env_file:

@@ -1,7 +1,7 @@
 """
 config/settings.py
 ------------------
-Central configuration using Pydantic BaseSettings.
+Central configuration for Syntrase using Pydantic BaseSettings.
 All values loaded from .env file automatically.
 """
 
@@ -10,7 +10,7 @@ from typing import Optional
 
 
 class Settings(BaseSettings):
-    """Application settings loaded from environment variables."""
+    """Syntrase application settings loaded from environment variables."""
 
     # ── OpenRouter ────────────────────────────────────────────
     OPENROUTER_API_KEY: str
@@ -50,6 +50,12 @@ class Settings(BaseSettings):
     # ── App ───────────────────────────────────────────────────
     APP_ENV: str = "development"
     DEBUG: bool = False
+
+    # ── Database (Supabase / PostgreSQL) ───────────────────
+    # Runtime pooler connection (port 6543, asyncpg driver)
+    DATABASE_URL: str = ""
+    # Direct connection for Alembic migrations (port 5432, sync driver)
+    DATABASE_URL_MIGRATIONS: str = ""
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 

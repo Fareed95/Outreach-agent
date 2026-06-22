@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-echo "Starting CrodlinOutreachAgent container..."
+echo "Starting Syntrase container..."
 echo "Timezone: $(date)"
 echo "Environment: $APP_ENV"
 

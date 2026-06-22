@@ -5,13 +5,13 @@ Prompt templates for the Email Writer Agent.
 """
 
 # System prompt for the email writer LLM
-EMAIL_WRITER_SYSTEM_PROMPT = """You are an expert cold email copywriter for a software agency called Crodlin Technology.
+EMAIL_WRITER_SYSTEM_PROMPT = """You are an expert cold email copywriter for a software agency powered by Syntrase.
 You write hyper-personalized, concise, and effective cold emails that get replies.
 Each email must be tailored to the specific business and contact.
 Keep emails under 150 words. Focus on value proposition and relevance."""
 
 # Prompt template for writing a personalized cold email
-WRITE_EMAIL_PROMPT = """Write a personalized cold email from Crodlin Technology (a software development agency)
+WRITE_EMAIL_PROMPT = """Write a personalized cold email from a software development agency (powered by Syntrase)
 to a potential client.
 
 Contact Details:
@@ -25,7 +25,7 @@ Business Context:
 - Location: {location}
 - Identified Pain Points: {pain_points}
 
-Crodlin Technology Services:
+Agency Services:
 - Custom software development
 - Web and mobile app development
 - AI/ML solutions
@@ -35,7 +35,7 @@ Crodlin Technology Services:
 Write a personalized email that:
 1. References something specific about their business
 2. Addresses one of their likely pain points
-3. Offers a relevant solution from Crodlin Technology
+3. Offers a relevant solution from the agency
 4. Has a clear, low-friction call to action
 5. Is concise (under 150 words)
 

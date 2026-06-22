@@ -1,5 +1,5 @@
 """
 config/__init__.py
 ------------------
-Configuration package for CrodlinOutreachAgent.
+Configuration package for Syntrase.
 """

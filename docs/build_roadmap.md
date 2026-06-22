@@ -1,6 +1,6 @@
-# CrodlinOutreachAgent — Build Roadmap & Phase Checklist
+# Syntrase — Build Roadmap & Phase Checklist
 
-> Phase 1 → Working system (use internally for Crodlin)
+> Phase 1 → Working system (use internally for Syntrase)
 > Phase 2 → Product (others can use it — cloud + frontend)
 > Phase 3 → Scale (monetization, community, enterprise)
 
@@ -46,7 +46,7 @@
 # PHASE 1 — Core Working System
 
 **Goal:** Build a fully working CLI-based outreach agent.
-Use it internally for Crodlin. Validate everything works.
+Use it internally for Syntrase. Validate everything works.
 
 **Timeline:** 6-8 weeks
 **Daily effort:** 2-3 hours
@@ -406,7 +406,7 @@ Use it internally for Crodlin. Validate everything works.
 - [ ] Feedback agent producing insights
 - [ ] Everything runs via Docker
 - [ ] Cron scheduled correctly
-- [ ] Used internally for Crodlin — first campaign sent
+- [ ] Used internally for Syntrase — first campaign sent
 
 **Phase 1 cost:** ~$15-20/month (Serper + OpenRouter)
 
@@ -727,7 +727,7 @@ Use it internally for Crodlin. Validate everything works.
 
 | Phase | Duration | Goal | Revenue |
 |---|---|---|---|
-| Phase 1 | 6-8 weeks | Working CLI system | Use for Crodlin internally |
+| Phase 1 | 6-8 weeks | Working CLI system | Use for Syntrase internally |
 | Phase 2 | 8-10 weeks | Full product + cloud | First external users |
 | Phase 3 | 3-6 months | Scale + monetize | ₹10,000+/month |
 
@@ -804,4 +804,4 @@ NextAuth.js (SSO)
 
 ---
 
-*Roadmap built for CrodlinOutreachAgent — Crodlin Technology, Mumbai.*
+*Roadmap built for Syntrase — Syntrase, Mumbai.*

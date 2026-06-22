@@ -1,5 +1,5 @@
 """
 tests/__init__.py
 ------------------
-Test package for CrodlinOutreachAgent.
+Test package for Syntrase.
 """
