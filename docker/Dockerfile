@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y cron && rm -rf /var/lib/apt/lists/*
 WORKDIR /app
 
 # Copy dependency files first (layer caching)
-COPY pyproject.toml .python-version ./
+COPY pyproject.toml uv.lock .python-version* ./
 
 # Install dependencies with uv
 RUN uv sync --frozen --no-dev

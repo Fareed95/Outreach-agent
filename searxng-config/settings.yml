@@ -1,0 +1,34 @@
+# SearXNG Configuration for CrodlinOutreachAgent
+# JSON format MUST be enabled for API access
+
+use_default_settings: true
+
+server:
+  secret_key: "${SEARXNG_SECRET_KEY}"
+  bind_address: "0.0.0.0:8080"
+
+search:
+  safe_search: 0
+  formats:
+    - html
+    - json    # CRITICAL — required for API calls
+
+engines:
+  - name: google
+    engine: google
+    shortcut: g
+    disabled: false
+
+  - name: bing
+    engine: bing
+    shortcut: b
+    disabled: false
+
+  - name: duckduckgo
+    engine: duckduckgo
+    shortcut: d
+    disabled: false
+
+outgoing:
+  request_timeout: 15.0
+  useragent_suffix: ""

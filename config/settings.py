@@ -17,8 +17,11 @@ class Settings(BaseSettings):
     OPENROUTER_BASE_URL: str = "https://openrouter.ai/api/v1"
     OPENROUTER_MODEL: str = "google/gemini-flash-1.5-8b"
 
-    # ── Serper (Google Search API) ────────────────────────────
-    SERPER_API_KEY: str
+    # ── Search ────────────────────────────
+    SEARCH_PROVIDER: str = "searxng"
+    SEARXNG_BASE_URL: str = "http://searxng:8080"
+    SEARXNG_SECRET_KEY: str = "changethissecretkey123"
+    SERPER_API_KEY: Optional[str] = None
     SERPER_BASE_URL: str = "https://google.serper.dev"
 
     # ── SMTP Email Accounts ───────────────────────────────────
@@ -56,6 +59,7 @@ class Settings(BaseSettings):
     DATABASE_URL: str = ""
     # Direct connection for Alembic migrations (port 5432, sync driver)
     DATABASE_URL_MIGRATIONS: str = ""
+    POSTGRES_PASSWORD: str = "password"
 
     model_config = {"env_file": ".env", "env_file_encoding": "utf-8"}
 
