@@ -32,6 +32,8 @@ services:
       - "8080:8080"
     environment:
       - SEARXNG_SECRET_KEY=${SEARXNG_SECRET_KEY:-changethissecretkey123}
+      - SEARXNG_BIND_ADDRESS=0.0.0.0
+      - GRANIAN_HOST=0.0.0.0
     volumes:
       - ../searxng-config:/etc/searxng
     healthcheck:

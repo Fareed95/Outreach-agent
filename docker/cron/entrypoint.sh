@@ -11,4 +11,5 @@ service cron start
 echo "Cron started. Tailing logs..."
 
 # Keep container alive + stream logs
+touch /app/logs/agent.log /app/logs/cron.log
 tail -f /app/logs/agent.log /app/logs/cron.log

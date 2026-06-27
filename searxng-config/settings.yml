@@ -4,8 +4,9 @@
 use_default_settings: true
 
 server:
-  secret_key: "${SEARXNG_SECRET_KEY}"
-  bind_address: "0.0.0.0:8080"
+  secret_key: "crodlin-searxng-secret-2024"
+  bind_address: "0.0.0.0"
+  port: 8080
 
 search:
   safe_search: 0
