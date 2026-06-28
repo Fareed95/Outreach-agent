@@ -28,6 +28,10 @@ engine = create_async_engine(
     max_overflow=20,
     pool_pre_ping=True,
     echo=settings.DEBUG,
+    connect_args={
+        "prepared_statement_cache_size": 0,
+        "statement_cache_size": 0
+    }
 )
 
 # ── Session Factory ───────────────────────────────────────────────────────────

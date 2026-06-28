@@ -45,15 +45,41 @@ client = AsyncOpenAI(
 )
 
 
-async def _llm_call(prompt: str, temperature: float = 0.3) -> str:
-    """Single LLM call via OpenRouter. Returns raw text response."""
-    response = await client.chat.completions.create(
-        model=settings.OPENROUTER_MODEL,
-        messages=[{"role": "user", "content": prompt}],
-        temperature=temperature,
-        max_tokens=8192,
-    )
-    return response.choices[0].message.content.strip()
+async def _llm_call(prompt: str, temperature: float = 0.3, max_retries: int = 3) -> str:
+    """Single LLM call via OpenRouter. Returns raw text response.
+    Retries on empty/None responses from the model."""
+    for attempt in range(1, max_retries + 1):
+        try:
+            response = await client.chat.completions.create(
+                model=settings.OPENROUTER_MODEL,
+                messages=[{"role": "user", "content": prompt}],
+                temperature=temperature,
+                max_tokens=8192,
+            )
+            # Guard against empty choices
+            if not response.choices:
+                logger.warning(f"LLM returned empty choices (attempt {attempt}/{max_retries})")
+                if attempt < max_retries:
+                    await asyncio.sleep(2 * attempt)
+                    continue
+                raise ValueError("LLM returned empty choices after all retries")
+
+            content = response.choices[0].message.content
+            # Guard against None content
+            if content is None:
+                logger.warning(f"LLM returned None content (attempt {attempt}/{max_retries})")
+                if attempt < max_retries:
+                    await asyncio.sleep(2 * attempt)
+                    continue
+                raise ValueError("LLM returned None content after all retries")
+
+            return content.strip()
+        except Exception as e:
+            if attempt < max_retries and "choices" not in str(e):
+                logger.warning(f"LLM call failed (attempt {attempt}/{max_retries}): {e}")
+                await asyncio.sleep(2 * attempt)
+                continue
+            raise
 
 
 def _parse_json_response(raw: str) -> any:
@@ -328,10 +354,11 @@ class NicheResearchAgent:
         self, session: AsyncSession, businesses: list[Business]
     ) -> None:
         """Save list of Business objects to DB."""
+        import uuid
         for biz in businesses:
             db_record = BusinessModel(
-                id=biz.id,
-                campaign_id=biz.campaign_id,
+                id=uuid.UUID(biz.id),
+                campaign_id=uuid.UUID(biz.campaign_id),
                 niche=biz.niche,
                 name=biz.name,
                 website=biz.website,
