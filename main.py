@@ -23,7 +23,6 @@ from utils.logger import logger
 from config.settings import settings
 from agents.research.agent import NicheSuggester, NicheResearchAgent
 from agents.research.schema import ResearchAgentInput
-from db.database import init_db
 
 
 console = Console()
@@ -175,8 +174,23 @@ async def run_outreach(args=None) -> None:
         console.print("[yellow]Cancelled.[/yellow]")
         return
 
-    # Create campaign per niche
+    from db.database import async_session_maker
+    from db.models import Campaign, CampaignStatus
+    import uuid
+
+    # Create master campaign
     campaign_id = str(uuid.uuid4())
+    
+    async with async_session_maker() as session:
+        campaign_record = Campaign(
+            id=uuid.UUID(campaign_id),
+            name=f"Outreach - {inputs['outreach_type']}",
+            niche="Multiple Niches",
+            target_location=inputs["location"],
+            status=CampaignStatus.running
+        )
+        session.add(campaign_record)
+        await session.commit()
 
     # Run research for each niche
     research_agent = NicheResearchAgent()
@@ -246,9 +260,6 @@ def parse_args():
 
 
 async def main():
-    # Initialize DB
-    await init_db()
-
     args = parse_args()
 
     if args.mode == "outreach":

@@ -24,8 +24,8 @@ from config.settings import settings
 from utils.logger import logger
 from utils.retry import async_retry
 from utils.search_provider import web_search, SearchResult
-from db.database import get_async_session
-from db.models import NicheResearchModel, BusinessModel  # SQLAlchemy models
+from db.database import async_session_maker
+from db.models import NicheResearch as NicheResearchModel, Business as BusinessModel  # SQLAlchemy models
 from agents.research.schema import (
     NicheResearch, Business, NicheSuggestion,
     ResearchAgentInput, ResearchAgentOutput
@@ -51,7 +51,7 @@ async def _llm_call(prompt: str, temperature: float = 0.3) -> str:
         model=settings.OPENROUTER_MODEL,
         messages=[{"role": "user", "content": prompt}],
         temperature=temperature,
-        max_tokens=2000,
+        max_tokens=8192,
     )
     return response.choices[0].message.content.strip()
 
@@ -121,7 +121,7 @@ class NicheResearchAgent:
             f"campaign_id={input.campaign_id}"
         )
 
-        async with get_async_session() as session:
+        async with async_session_maker() as session:
             # Step 1: Get or create niche research (cached)
             niche_research = await self._get_or_create_niche_research(
                 session, input.niche
